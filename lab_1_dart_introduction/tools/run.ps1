@@ -1,1 +1,0 @@
-dart .\bin\main.dart
