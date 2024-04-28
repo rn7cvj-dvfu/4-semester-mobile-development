@@ -1,0 +1,58 @@
+name: ios
+description: "A new Flutter project."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.4 <4.0.0'
+
+dependencies:
+
+  flutter:
+    sdk: flutter
+
+  # Localizations
+  intl: ^0.17.0
+  slang: ^3.26.1
+  slang_flutter: ^3.26.1
+  
+
+  # UI
+  cached_network_image: ^3.3.1
+  shimmer: ^3.0.0
+  
+
+  # Navigation
+  go_router: ^10.0.0
+
+  # DI
+  riverpod: ^2.5.1
+  flutter_riverpod: ^2.5.1
+  hooks_riverpod: ^2.5.1
+  flutter_hooks: ^0.20.5
+
+  # State managemnet
+  flutter_bloc: ^8.1.5
+
+  # Model serialization
+  freezed: ^2.5.2
+  freezed_annotation: ^2.4.1
+
+  # Api
+  chopper: ^7.4.0
+  
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+    
+  flutter_lints: ^3.0.0
+
+  build_runner: ^2.4.9
+  chopper_generator: ^7.4.0
+
+  riverpod_generator: ^2.4.0
+  riverpod_lint: ^2.3.10
+
+flutter:
+
+  uses-material-design: true
