@@ -1,0 +1,9 @@
+displayTasks: Показать задачи
+all: Все 
+complited: Завершенный
+uncomplited: Незавершенный
+favourite: Избранный
+orderdTasks: Сортировать задачи
+orderByCreateDate: По дате создания
+orderByPriority: По приоритету
+orderByName: По имени

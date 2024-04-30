@@ -16,15 +16,10 @@ dependencies:
   slang: ^3.26.1
   slang_flutter: ^3.26.1
   
-
   # UI
   cached_network_image: ^3.3.1
   shimmer: ^3.0.0
   
-
-  # Navigation
-  go_router: ^10.0.0
-
   # DI
   riverpod: ^2.5.1
   flutter_riverpod: ^2.5.1
@@ -41,6 +36,9 @@ dependencies:
   # Api
   chopper: ^7.4.0
   
+  # Logger
+  logger: ^2.2.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
