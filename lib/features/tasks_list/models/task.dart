@@ -7,12 +7,12 @@ class TaskViewModel {
   final DateTime createdAt;
   final String categoryId;
 
-  TaskViewModel({
+  const TaskViewModel({
     required this.id,
     required this.title,
     required this.description,
-    required this.isCompleted,
-    required this.isFavourite,
+    this.isCompleted = false,
+    this.isFavourite = false,
     required this.createdAt,
     required this.categoryId,
   });

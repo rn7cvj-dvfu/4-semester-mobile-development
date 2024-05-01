@@ -12,7 +12,7 @@ class AllCategoryPage extends StatelessWidget {
           centerTitle: true,
           title: Text(t.categories.title),
         ),
-        body: CategoryList(),
+        body: const CategoryList(),
         floatingActionButton: const NewCategoryDialogButton(),
         resizeToAvoidBottomInset: false,
       );

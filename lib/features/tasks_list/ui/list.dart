@@ -51,9 +51,9 @@ class TasksList extends HookConsumerWidget {
 }
 
 class TaskItem extends StatelessWidget {
-  const TaskItem({super.key, required this.task});
-
   final TaskViewModel task;
+
+  const TaskItem({super.key, required this.task});
 
   @override
   Widget build(BuildContext context) {

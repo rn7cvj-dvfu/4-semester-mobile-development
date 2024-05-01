@@ -3,7 +3,7 @@ class CategoryViewModel {
   final String name;
   final DateTime createDate;
 
-  CategoryViewModel({
+  const CategoryViewModel({
     required this.id,
     required this.name,
     required this.createDate,

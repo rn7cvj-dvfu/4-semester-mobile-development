@@ -6,21 +6,21 @@ import 'package:ios/features/categories_list/ui/category_dialog.dart';
 import 'package:ios/features/categories_list/ui/delete_dialog.dart';
 import 'package:ios/navigation/navigator.dart';
 
-class CategoryList extends ConsumerWidget {
-  CategoryList({super.key});
+final List<CategoryViewModel> mockCategories = [
+  CategoryViewModel(id: "1", name: "Учеба", createDate: DateTime.now()),
+  CategoryViewModel(id: "2", name: "Работа", createDate: DateTime.now()),
+  CategoryViewModel(id: "3", name: "ДВФУ", createDate: DateTime.now()),
+];
 
-  final List<CategoryViewModel> categories = [
-    CategoryViewModel(id: "1", name: "Учеба", createDate: DateTime.now()),
-    CategoryViewModel(id: "2", name: "Работа", createDate: DateTime.now()),
-    CategoryViewModel(id: "3", name: "ДВФУ", createDate: DateTime.now()),
-  ];
+class CategoryList extends ConsumerWidget {
+  const CategoryList({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return RefreshIndicator(
       onRefresh: () async {},
       child: ListView(
-        children: categories
+        children: mockCategories
             .map(
               (category) => CategoryItem(category: category),
             )
