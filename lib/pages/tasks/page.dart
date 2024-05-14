@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ios/features/tasks_filter/ui/filter_button.dart';
-import 'package:ios/features/tasks_list/ui/list.dart';
-import 'package:ios/features/tasks_list/ui/new_task.dart';
+
+import '../../features/new_task/ui/button.dart';
+import '../../features/tasks_filter/ui/filter_button.dart';
+import '../../features/tasks_list/ui/list.dart';
 
 class TasksPage extends StatelessWidget {
   final String title;

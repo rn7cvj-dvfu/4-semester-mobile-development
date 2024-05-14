@@ -1,8 +1,8 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:ios/.gen/i18n/strings.g.dart';
+
+import '../../../.gen/i18n/strings.g.dart';
 
 class TaskPage extends StatelessWidget {
   const TaskPage({super.key, required this.taskId});
@@ -34,7 +34,7 @@ class TaskPage extends StatelessWidget {
             delegate: SliverChildListDelegate(
               [
                 const SizedBox(height: 16),
-                TaskChips(),
+                const TaskChips(),
                 const SizedBox(height: 16),
                 Card(
                   margin: const EdgeInsets.symmetric(horizontal: 16),
@@ -80,15 +80,34 @@ class TaskChips extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Wrap(
-        spacing: 8,
-        children: [
-          Chip(label: Text('Создана сегодня в 12:30')),
-          Chip(label: Text('ДВФУ')),
-          Chip(label: Text('Избранное')),
-          Chip(label: Text('Заверенная')),
+    return ShaderMask(
+      shaderCallback: (Rect rect) => LinearGradient(
+        begin: Alignment.centerLeft,
+        end: Alignment.centerRight,
+        colors: [
+          Theme.of(context).colorScheme.secondaryContainer,
+          Colors.transparent,
+          Colors.transparent,
+          Theme.of(context).colorScheme.secondaryContainer,
         ],
+        stops: [0.0, 16 / rect.width, 1 - 16 / rect.width, 1.0],
+      ).createShader(rect),
+      blendMode: BlendMode.dstOut,
+      child: const SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: [
+            SizedBox(width: 16),
+            Chip(label: Text('Создана сегодня в 12:30')),
+            SizedBox(width: 8),
+            Chip(label: Text('ДВФУ')),
+            SizedBox(width: 8),
+            Chip(label: Text('Избранное')),
+            SizedBox(width: 8),
+            Chip(label: Text('Заверенная')),
+            SizedBox(width: 16),
+          ],
+        ),
       ),
     );
   }

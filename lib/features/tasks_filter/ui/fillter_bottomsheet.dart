@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ios/.gen/i18n/strings.g.dart';
+
+import '../../../.gen/i18n/strings.g.dart';
 
 class FilterBottomSheet extends StatelessWidget {
   const FilterBottomSheet({super.key});
@@ -25,12 +26,11 @@ class FilterBottomSheet extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 _ViewFilter(),
-                Divider(),
                 _OrderFilter(),
               ],
             ),
           ),
-          ButtonBar(
+          OverflowBar(
             alignment: MainAxisAlignment.spaceEvenly,
             children: [
               TextButton(
@@ -70,6 +70,7 @@ class _ViewFilter extends StatelessWidget {
           const SizedBox(height: 16),
           DropdownButton<int>(
             isExpanded: true,
+            underline: const SizedBox.shrink(),
             value: 1,
             items: [
               DropdownMenuItem(
@@ -114,6 +115,7 @@ class _OrderFilter extends StatelessWidget {
           const SizedBox(height: 16),
           DropdownButton<int>(
             isExpanded: true,
+            underline: const SizedBox.shrink(),
             value: 1,
             items: [
               DropdownMenuItem(

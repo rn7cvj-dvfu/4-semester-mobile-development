@@ -1,7 +1,8 @@
-import 'package:flutter/gestures.dart';
+
 import 'package:flutter/material.dart';
-import 'package:ios/.gen/i18n/strings.g.dart';
-import 'package:ios/features/new_task/ui/bottomsheet.dart';
+
+import '../../../.gen/i18n/strings.g.dart';
+import 'bottomsheet.dart';
 
 class NewTaskButton extends StatelessWidget {
   const NewTaskButton({super.key});
@@ -9,6 +10,9 @@ class NewTaskButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) => FloatingActionButton.extended(
         onPressed: () => _openNewTaskBottomSheet(context),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16)
+        ),
         label: Text(t.tasks.newTasks),
         icon: const Icon(Icons.add),
       );

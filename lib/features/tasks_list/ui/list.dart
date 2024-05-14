@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:ios/features/tasks_list/models/task.dart';
+
+import '../../../navigation/navigator.dart';
+import '../models/task.dart';
 
 final List<TaskViewModel> mockTasks = [
   TaskViewModel(
@@ -87,6 +89,7 @@ class TaskItem extends StatelessWidget {
         title: Text(task.title),
         subtitle: Text(task.description),
         trailing: const Icon(Icons.star_border),
+        onTap: () => AppNavigator.openTaskPage(task.id),
       ),
     );
   }

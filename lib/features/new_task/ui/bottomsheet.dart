@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:ios/.gen/i18n/strings.g.dart';
+
+import '../../../.gen/i18n/strings.g.dart';
 
 class NewTaskBottomSheet extends StatelessWidget {
   const NewTaskBottomSheet({
@@ -34,14 +34,18 @@ class NewTaskBottomSheet extends StatelessWidget {
             TextField(
               decoration: InputDecoration(
                 labelText: t.tasks.title,
-                border: const OutlineInputBorder(),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
               ),
             ),
             const SizedBox(height: 16),
             TextField(
               decoration: InputDecoration(
                 labelText: t.tasks.description,
-                border: OutlineInputBorder(),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
               ),
               maxLines: 4,
             ),
@@ -53,9 +57,9 @@ class NewTaskBottomSheet extends StatelessWidget {
                 icon: const Icon(Icons.add),
                 label: Text(t.tasks.addTask),
                 style: ButtonStyle(
-                  shape: MaterialStateProperty.all(
+                  shape: WidgetStatePropertyAll(
                     RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(16),
                     ),
                   ),
                 ),

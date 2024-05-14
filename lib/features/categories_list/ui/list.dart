@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ios/.gen/i18n/strings.g.dart';
-import 'package:ios/features/categories_list/models/category.dart';
-import 'package:ios/features/categories_list/ui/category_dialog.dart';
-import 'package:ios/features/categories_list/ui/delete_dialog.dart';
-import 'package:ios/navigation/navigator.dart';
+
+import '../../../.gen/i18n/strings.g.dart';
+import '../../../navigation/navigator.dart';
+import '../models/category.dart';
+import 'category_dialog.dart';
+import 'delete_dialog.dart';
+
 
 final List<CategoryViewModel> mockCategories = [
   CategoryViewModel(id: "1", name: "Учеба", createDate: DateTime.now()),
