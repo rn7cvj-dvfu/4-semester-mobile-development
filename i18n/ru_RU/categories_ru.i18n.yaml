@@ -1,0 +1,7 @@
+title: Категории
+newCategory: Новая категория
+editCategory: Редактировать категорию
+categoryName: Название категории
+categoryNameEmpty: Название категории не может быть пустым
+deleteCategory: Удалить категорию
+configDeleteCategory: Удалить категорию и все ее содержимое

@@ -1,0 +1,9 @@
+displayTasks: Display tasks
+all: All 
+complited: Complited
+uncomplited: Uncomplited
+favourite: Favourite
+orderdTasks: Order tasks by
+orderByCreateDate: By creation date
+orderByPriority: By priority
+orderByName: By name
