@@ -1,11 +1,16 @@
 import 'package:uuid/uuid.dart';
 
+import '../../data/categories/interface.dart';
 import 'interface.dart';
 import 'model.dart';
 
 class CategoriesListRepositoryImpl extends CategoriesListRepository {
   final List<CategoryModel> categories = [];
   final Uuid uuid = const Uuid();
+
+  final CategoriesSource _categoriesSource;
+
+  CategoriesListRepositoryImpl(this._categoriesSource);
 
   @override
   Future<void> addCategories(String newCategoryName) async {

@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../.gen/i18n/strings.g.dart';
-import '../../../navigation/navigator.dart';
 import '../../../provider/bloc.dart';
 import '../bloc/bloc.dart';
 import '../bloc/state.dart';

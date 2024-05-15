@@ -14,12 +14,17 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
+CategoryModel _$CategoryModelFromJson(Map<String, dynamic> json) {
+  return _CategoryModel.fromJson(json);
+}
+
 /// @nodoc
 mixin _$CategoryModel {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   DateTime get createDate => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $CategoryModelCopyWith<CategoryModel> get copyWith =>
       throw _privateConstructorUsedError;
@@ -112,10 +117,13 @@ class __$$CategoryModelImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$CategoryModelImpl implements _CategoryModel {
   const _$CategoryModelImpl(
       {required this.id, required this.name, required this.createDate});
+
+  factory _$CategoryModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CategoryModelImplFromJson(json);
 
   @override
   final String id;
@@ -140,6 +148,7 @@ class _$CategoryModelImpl implements _CategoryModel {
                 other.createDate == createDate));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, createDate);
 
@@ -148,6 +157,13 @@ class _$CategoryModelImpl implements _CategoryModel {
   @pragma('vm:prefer-inline')
   _$$CategoryModelImplCopyWith<_$CategoryModelImpl> get copyWith =>
       __$$CategoryModelImplCopyWithImpl<_$CategoryModelImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$CategoryModelImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _CategoryModel implements CategoryModel {
@@ -155,6 +171,9 @@ abstract class _CategoryModel implements CategoryModel {
       {required final String id,
       required final String name,
       required final DateTime createDate}) = _$CategoryModelImpl;
+
+  factory _CategoryModel.fromJson(Map<String, dynamic> json) =
+      _$CategoryModelImpl.fromJson;
 
   @override
   String get id;

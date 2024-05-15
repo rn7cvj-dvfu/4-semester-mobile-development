@@ -9,4 +9,7 @@ class CategoryModel with _$CategoryModel {
     required String name,
     required DateTime createDate,
   }) = _CategoryModel;
+
+  factory CategoryModel.fromJson(Map<String, dynamic> json) =>
+      _$CategoryModelFromJson(json);
 }
