@@ -1,2 +1,5 @@
 fallbackTitle: Tasks
 newTasks: New task
+description: Description
+title: Title
+addTask: Add task

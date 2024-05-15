@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ios/.gen/i18n/strings.g.dart';
+
+import '../../../.gen/i18n/strings.g.dart';
 
 final _formKey = GlobalKey<FormState>();
 

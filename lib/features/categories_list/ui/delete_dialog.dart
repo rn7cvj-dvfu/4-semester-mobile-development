@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ios/.gen/i18n/strings.g.dart';
+
+import '../../../.gen/i18n/strings.g.dart';
 
 class DeleateCategoryDialog extends StatelessWidget {
   const DeleateCategoryDialog({super.key});

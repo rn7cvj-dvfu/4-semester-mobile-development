@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 48 (24 per locale)
+/// Strings: 54 (27 per locale)
 ///
-/// Built on 2024-04-28 at 12:37 UTC
+/// Built on 2024-05-14 at 07:23 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -148,21 +148,28 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final Translations _root = this; // ignore: unused_field
 
 	// Translations
-	late final _StringsTasksEn tasks = _StringsTasksEn._(_root);
+	late final _StringsFilterEn filter = _StringsFilterEn._(_root);
 	late final _StringsCommonEn common = _StringsCommonEn._(_root);
 	late final _StringsCategoriesEn categories = _StringsCategoriesEn._(_root);
-	late final _StringsFilterEn filter = _StringsFilterEn._(_root);
+	late final _StringsTasksEn tasks = _StringsTasksEn._(_root);
 }
 
-// Path: tasks
-class _StringsTasksEn {
-	_StringsTasksEn._(this._root);
+// Path: filter
+class _StringsFilterEn {
+	_StringsFilterEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String get fallbackTitle => 'Tasks';
-	String get newTasks => 'New task';
+	String get displayTasks => 'Display tasks';
+	String get all => 'All';
+	String get complited => 'Complited';
+	String get uncomplited => 'Uncomplited';
+	String get favourite => 'Favourite';
+	String get orderdTasks => 'Order tasks by';
+	String get orderByCreateDate => 'By creation date';
+	String get orderByPriority => 'By priority';
+	String get orderByName => 'By name';
 }
 
 // Path: common
@@ -196,22 +203,18 @@ class _StringsCategoriesEn {
 	String get configDeleteCategory => 'Delete category and all its content';
 }
 
-// Path: filter
-class _StringsFilterEn {
-	_StringsFilterEn._(this._root);
+// Path: tasks
+class _StringsTasksEn {
+	_StringsTasksEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String get displayTasks => 'Display tasks';
-	String get all => 'All';
-	String get complited => 'Complited';
-	String get uncomplited => 'Uncomplited';
-	String get favourite => 'Favourite';
-	String get orderdTasks => 'Order tasks by';
-	String get orderByCreateDate => 'By creation date';
-	String get orderByPriority => 'By priority';
-	String get orderByName => 'By name';
+	String get fallbackTitle => 'Tasks';
+	String get newTasks => 'New task';
+	String get description => 'Description';
+	String get title => 'Title';
+	String get addTask => 'Add task';
 }
 
 // Path: <root>
@@ -238,52 +241,10 @@ class _StringsRu implements Translations {
 	@override late final _StringsRu _root = this; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsCommonRu common = _StringsCommonRu._(_root);
+	@override late final _StringsFilterRu filter = _StringsFilterRu._(_root);
 	@override late final _StringsTasksRu tasks = _StringsTasksRu._(_root);
 	@override late final _StringsCategoriesRu categories = _StringsCategoriesRu._(_root);
-	@override late final _StringsFilterRu filter = _StringsFilterRu._(_root);
-}
-
-// Path: common
-class _StringsCommonRu implements _StringsCommonEn {
-	_StringsCommonRu._(this._root);
-
-	@override final _StringsRu _root; // ignore: unused_field
-
-	// Translations
-	@override String get delete => 'Удалить';
-	@override String get cancel => 'Отмена';
-	@override String get add => 'Добавить';
-	@override String get edit => 'Редактировать';
-	@override String get apply => 'Применить';
-	@override String get close => 'Закрыть';
-}
-
-// Path: tasks
-class _StringsTasksRu implements _StringsTasksEn {
-	_StringsTasksRu._(this._root);
-
-	@override final _StringsRu _root; // ignore: unused_field
-
-	// Translations
-	@override String get fallbackTitle => 'Задачи';
-	@override String get newTasks => 'Новая задача';
-}
-
-// Path: categories
-class _StringsCategoriesRu implements _StringsCategoriesEn {
-	_StringsCategoriesRu._(this._root);
-
-	@override final _StringsRu _root; // ignore: unused_field
-
-	// Translations
-	@override String get title => 'Категории';
-	@override String get newCategory => 'Новая категория';
-	@override String get editCategory => 'Редактировать категорию';
-	@override String get categoryName => 'Название категории';
-	@override String get categoryNameEmpty => 'Название категории не может быть пустым';
-	@override String get deleteCategory => 'Удалить категорию';
-	@override String get configDeleteCategory => 'Удалить категорию и все ее содержимое';
+	@override late final _StringsCommonRu common = _StringsCommonRu._(_root);
 }
 
 // Path: filter
@@ -304,14 +265,66 @@ class _StringsFilterRu implements _StringsFilterEn {
 	@override String get orderByName => 'По имени';
 }
 
+// Path: tasks
+class _StringsTasksRu implements _StringsTasksEn {
+	_StringsTasksRu._(this._root);
+
+	@override final _StringsRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get fallbackTitle => 'Задачи';
+	@override String get newTasks => 'Новая задача';
+	@override String get description => 'Описание';
+	@override String get title => 'Название';
+	@override String get addTask => 'Добавить задачу';
+}
+
+// Path: categories
+class _StringsCategoriesRu implements _StringsCategoriesEn {
+	_StringsCategoriesRu._(this._root);
+
+	@override final _StringsRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Категории';
+	@override String get newCategory => 'Новая категория';
+	@override String get editCategory => 'Редактировать категорию';
+	@override String get categoryName => 'Название категории';
+	@override String get categoryNameEmpty => 'Название категории не может быть пустым';
+	@override String get deleteCategory => 'Удалить категорию';
+	@override String get configDeleteCategory => 'Удалить категорию и все ее содержимое';
+}
+
+// Path: common
+class _StringsCommonRu implements _StringsCommonEn {
+	_StringsCommonRu._(this._root);
+
+	@override final _StringsRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get delete => 'Удалить';
+	@override String get cancel => 'Отмена';
+	@override String get add => 'Добавить';
+	@override String get edit => 'Редактировать';
+	@override String get apply => 'Применить';
+	@override String get close => 'Закрыть';
+}
+
 /// Flat map(s) containing all translations.
 /// Only for edge cases! For simple maps, use the map function of this library.
 
 extension on Translations {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
-			case 'tasks.fallbackTitle': return 'Tasks';
-			case 'tasks.newTasks': return 'New task';
+			case 'filter.displayTasks': return 'Display tasks';
+			case 'filter.all': return 'All';
+			case 'filter.complited': return 'Complited';
+			case 'filter.uncomplited': return 'Uncomplited';
+			case 'filter.favourite': return 'Favourite';
+			case 'filter.orderdTasks': return 'Order tasks by';
+			case 'filter.orderByCreateDate': return 'By creation date';
+			case 'filter.orderByPriority': return 'By priority';
+			case 'filter.orderByName': return 'By name';
 			case 'common.delete': return 'Delete';
 			case 'common.cancel': return 'Cancel';
 			case 'common.add': return 'Add';
@@ -325,15 +338,11 @@ extension on Translations {
 			case 'categories.categoryNameEmpty': return 'Category name cannot be empty';
 			case 'categories.deleteCategory': return 'Delete category';
 			case 'categories.configDeleteCategory': return 'Delete category and all its content';
-			case 'filter.displayTasks': return 'Display tasks';
-			case 'filter.all': return 'All';
-			case 'filter.complited': return 'Complited';
-			case 'filter.uncomplited': return 'Uncomplited';
-			case 'filter.favourite': return 'Favourite';
-			case 'filter.orderdTasks': return 'Order tasks by';
-			case 'filter.orderByCreateDate': return 'By creation date';
-			case 'filter.orderByPriority': return 'By priority';
-			case 'filter.orderByName': return 'By name';
+			case 'tasks.fallbackTitle': return 'Tasks';
+			case 'tasks.newTasks': return 'New task';
+			case 'tasks.description': return 'Description';
+			case 'tasks.title': return 'Title';
+			case 'tasks.addTask': return 'Add task';
 			default: return null;
 		}
 	}
@@ -342,21 +351,6 @@ extension on Translations {
 extension on _StringsRu {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
-			case 'common.delete': return 'Удалить';
-			case 'common.cancel': return 'Отмена';
-			case 'common.add': return 'Добавить';
-			case 'common.edit': return 'Редактировать';
-			case 'common.apply': return 'Применить';
-			case 'common.close': return 'Закрыть';
-			case 'tasks.fallbackTitle': return 'Задачи';
-			case 'tasks.newTasks': return 'Новая задача';
-			case 'categories.title': return 'Категории';
-			case 'categories.newCategory': return 'Новая категория';
-			case 'categories.editCategory': return 'Редактировать категорию';
-			case 'categories.categoryName': return 'Название категории';
-			case 'categories.categoryNameEmpty': return 'Название категории не может быть пустым';
-			case 'categories.deleteCategory': return 'Удалить категорию';
-			case 'categories.configDeleteCategory': return 'Удалить категорию и все ее содержимое';
 			case 'filter.displayTasks': return 'Показать задачи';
 			case 'filter.all': return 'Все';
 			case 'filter.complited': return 'Завершенный';
@@ -366,6 +360,24 @@ extension on _StringsRu {
 			case 'filter.orderByCreateDate': return 'По дате создания';
 			case 'filter.orderByPriority': return 'По приоритету';
 			case 'filter.orderByName': return 'По имени';
+			case 'tasks.fallbackTitle': return 'Задачи';
+			case 'tasks.newTasks': return 'Новая задача';
+			case 'tasks.description': return 'Описание';
+			case 'tasks.title': return 'Название';
+			case 'tasks.addTask': return 'Добавить задачу';
+			case 'categories.title': return 'Категории';
+			case 'categories.newCategory': return 'Новая категория';
+			case 'categories.editCategory': return 'Редактировать категорию';
+			case 'categories.categoryName': return 'Название категории';
+			case 'categories.categoryNameEmpty': return 'Название категории не может быть пустым';
+			case 'categories.deleteCategory': return 'Удалить категорию';
+			case 'categories.configDeleteCategory': return 'Удалить категорию и все ее содержимое';
+			case 'common.delete': return 'Удалить';
+			case 'common.cancel': return 'Отмена';
+			case 'common.add': return 'Добавить';
+			case 'common.edit': return 'Редактировать';
+			case 'common.apply': return 'Применить';
+			case 'common.close': return 'Закрыть';
 			default: return null;
 		}
 	}

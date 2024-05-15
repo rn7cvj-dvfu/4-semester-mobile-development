@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ios/.gen/i18n/strings.g.dart';
-import 'package:ios/features/categories_list/ui/category_dialog.dart';
+
+import '../../../.gen/i18n/strings.g.dart';
+import 'category_dialog.dart';
 
 class NewCategoryDialogButton extends StatelessWidget {
   const NewCategoryDialogButton({super.key});
