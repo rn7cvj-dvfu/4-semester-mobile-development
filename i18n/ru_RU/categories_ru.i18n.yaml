@@ -5,3 +5,4 @@ categoryName: Название категории
 categoryNameEmpty: Название категории не может быть пустым
 deleteCategory: Удалить категорию
 configDeleteCategory: Удалить категорию и все ее содержимое
+erorrWhileLoading: Ошибка во время загрузки категорий

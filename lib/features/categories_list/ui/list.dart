@@ -1,41 +1,52 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../.gen/i18n/strings.g.dart';
 import '../../../navigation/navigator.dart';
+import '../../../provider/bloc.dart';
+import '../bloc/bloc.dart';
+import '../bloc/state.dart';
 import '../models/category.dart';
 import 'category_dialog.dart';
 import 'delete_dialog.dart';
-
-
-final List<CategoryViewModel> mockCategories = [
-  CategoryViewModel(id: "1", name: "Учеба", createDate: DateTime.now()),
-  CategoryViewModel(id: "2", name: "Работа", createDate: DateTime.now()),
-  CategoryViewModel(id: "3", name: "ДВФУ", createDate: DateTime.now()),
-];
 
 class CategoryList extends ConsumerWidget {
   const CategoryList({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final bloc = ref.watch(ProviderBloc.categoriesList);
+
     return RefreshIndicator(
-      onRefresh: () async {},
-      child: ListView(
-        children: mockCategories
-            .map(
-              (category) => CategoryItem(category: category),
-            )
-            .toList(),
+      onRefresh: bloc.refresh,
+      child: BlocBuilder<CategoriesListBloc, CategoriesListState>(
+        builder: (context, state) => state.map(
+          loading: (_) => Center(
+            child: CircularProgressIndicator(
+              color: Theme.of(context).colorScheme.secondary,
+            ),
+          ),
+          loaded: (data) => ListView(
+            children: data.categories
+                .map(
+                  (category) => CategoryItem(category: category),
+                )
+                .toList(),
+          ),
+          error: (_) => Center(
+            child: Text(t.categories.erorrWhileLoading),
+          ),
+        ),
       ),
     );
   }
 }
 
 class CategoryItem extends StatelessWidget {
-  const CategoryItem({super.key, required this.category});
-
   final CategoryViewModel category;
+
+  const CategoryItem({super.key, required this.category});
 
   @override
   Widget build(BuildContext context) => Dismissible(
@@ -68,8 +79,7 @@ class CategoryItem extends StatelessWidget {
         child: ListTile(
           leading: const Icon(Icons.list_alt),
           title: Text(category.name),
-          onTap: () =>
-              AppNavigator.openCategoryTasks(category.name, category.id),
+          onTap: () {},
         ),
       );
 

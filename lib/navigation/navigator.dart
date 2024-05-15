@@ -6,13 +6,14 @@ import 'routes.dart';
 final class AppNavigator {
   static BuildContext get context => rootNavigatorKey.currentContext!;
 
+  AppNavigator._();
+
   static void openCategoryTasks(
-    String categoryName,
     String categoryId,
   ) {
     Navigator.of(context).pushNamed(
       RoutesPath.tasks,
-      arguments: categoryName,
+      arguments: categoryId,
     );
   }
 

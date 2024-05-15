@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 54 (27 per locale)
+/// Strings: 56 (28 per locale)
 ///
-/// Built on 2024-05-14 at 07:23 UTC
+/// Built on 2024-05-15 at 02:54 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -201,6 +201,7 @@ class _StringsCategoriesEn {
 	String get categoryNameEmpty => 'Category name cannot be empty';
 	String get deleteCategory => 'Delete category';
 	String get configDeleteCategory => 'Delete category and all its content';
+	String get erorrWhileLoading => 'Error while loading caterogies';
 }
 
 // Path: tasks
@@ -293,6 +294,7 @@ class _StringsCategoriesRu implements _StringsCategoriesEn {
 	@override String get categoryNameEmpty => 'Название категории не может быть пустым';
 	@override String get deleteCategory => 'Удалить категорию';
 	@override String get configDeleteCategory => 'Удалить категорию и все ее содержимое';
+	@override String get erorrWhileLoading => 'Ошибка во время загрузки категорий';
 }
 
 // Path: common
@@ -338,6 +340,7 @@ extension on Translations {
 			case 'categories.categoryNameEmpty': return 'Category name cannot be empty';
 			case 'categories.deleteCategory': return 'Delete category';
 			case 'categories.configDeleteCategory': return 'Delete category and all its content';
+			case 'categories.erorrWhileLoading': return 'Error while loading caterogies';
 			case 'tasks.fallbackTitle': return 'Tasks';
 			case 'tasks.newTasks': return 'New task';
 			case 'tasks.description': return 'Description';
@@ -372,6 +375,7 @@ extension on _StringsRu {
 			case 'categories.categoryNameEmpty': return 'Название категории не может быть пустым';
 			case 'categories.deleteCategory': return 'Удалить категорию';
 			case 'categories.configDeleteCategory': return 'Удалить категорию и все ее содержимое';
+			case 'categories.erorrWhileLoading': return 'Ошибка во время загрузки категорий';
 			case 'common.delete': return 'Удалить';
 			case 'common.cancel': return 'Отмена';
 			case 'common.add': return 'Добавить';

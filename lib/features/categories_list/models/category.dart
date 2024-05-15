@@ -1,11 +1,19 @@
-class CategoryViewModel {
-  final String id;
-  final String name;
-  final DateTime createDate;
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  const CategoryViewModel({
-    required this.id,
-    required this.name,
-    required this.createDate,
-  });
+import '../../../repositories/categories/model.dart';
+part '../../../.gen/features/categories_list/models/category.freezed.dart';
+
+@freezed
+class CategoryViewModel with _$CategoryViewModel {
+  const factory CategoryViewModel({
+    required String id,
+    required String name,
+    required DateTime createDate,
+  }) = _CategoryViewModel;
+
+  factory CategoryViewModel.fromModel(CategoryModel model) => CategoryViewModel(
+        id: model.id,
+        name: model.name,
+        createDate: model.createDate,
+      );
 }
