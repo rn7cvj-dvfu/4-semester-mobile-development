@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'features/task_page/ui/page.dart';
+import 'features/task/task_page/ui/page.dart';
 import 'navigation/router.dart';
 import 'navigation/routes.dart';
 import 'pages/all_categories/page.dart';

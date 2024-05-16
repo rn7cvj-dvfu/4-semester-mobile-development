@@ -1,4 +1,6 @@
 title: Категории
+noCategories: Нет категорий
+categoryNameExists: Категория с таким именем уже существует
 newCategory: Новая категория
 editCategory: Редактировать категорию
 categoryName: Название категории

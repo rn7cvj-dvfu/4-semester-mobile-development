@@ -1,4 +1,6 @@
 title: Categories
+noCategories: No categories
+categoryNameExists: Category with this name already exists
 newCategory: New category
 editCategory: Edit category
 categoryName: Category name
