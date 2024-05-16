@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../features/categories/categories_list/bloc/bloc.dart';
 import '../features/categories/edit_category/bloc/bloc.dart';
 import '../features/categories/new_category/bloc/bloc.dart';
+import '../features/tasks/tasks_list/bloc/bloc.dart';
 import 'repository.dart';
 
 final class ProviderBloc {
@@ -12,6 +13,10 @@ final class ProviderBloc {
     (ref) => CategoriesListBloc(
       ref.watch(ProviderRespository.categoriesList),
     ),
+  );
+
+  static final tasksList = Provider<TasksListBloc>(
+    (ref) => TasksListBloc(),
   );
 
   static final newCategory = Provider<NewCategoryBloc>(

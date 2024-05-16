@@ -1,19 +1,28 @@
-class TaskViewModel {
-  final String id;
-  final String title;
-  final String description;
-  final bool isCompleted;
-  final bool isFavourite;
-  final DateTime createdAt;
-  final String categoryId;
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  const TaskViewModel({
-    required this.id,
-    required this.title,
-    required this.description,
-    this.isCompleted = false,
-    this.isFavourite = false,
-    required this.createdAt,
-    required this.categoryId,
-  });
+import '../../../../repositories/tasks/model.dart';
+
+part '../../../../.gen/features/tasks/tasks_list/models/task.freezed.dart';
+
+@freezed
+class TaskViewModel with _$TaskViewModel {
+  const factory TaskViewModel({
+    required String id,
+    required String categoryId,
+    required String title,
+    required String description,
+    @Default(false) bool isCompleted,
+    @Default(false) bool isFavourite,
+    required DateTime createdAt,
+  }) = _TaskViewModel;
+
+  factory TaskViewModel.fromModel(TaskModel model) => TaskViewModel(
+        id: model.id,
+        categoryId: model.categoryId,
+        title: model.title,
+        description: model.description,
+        isCompleted: model.isCompleted,
+        isFavourite: model.isFavourite,
+        createdAt: model.createdAt,
+      );
 }

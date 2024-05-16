@@ -36,8 +36,8 @@ class _Navigator extends StatelessWidget {
           ),
         RoutesPath.tasks => MaterialPageRoute(
             builder: (_) => TasksPage(
-              title: settings.arguments as String,
-              categoryId: settings.arguments as String,
+              categoryId: (settings.arguments as List<String>).first,
+              categoryName: (settings.arguments as List<String>).last,
             ),
           ),
         RoutesPath.task => MaterialPageRoute(

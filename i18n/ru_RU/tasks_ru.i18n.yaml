@@ -3,3 +3,5 @@ newTasks: Новая задача
 description: Описание
 title: Название
 addTask: Добавить задачу
+errorWhileLoading: Ошибка при загрузке задач
+noTasks: Нет задач

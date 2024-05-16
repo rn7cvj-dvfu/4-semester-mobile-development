@@ -34,8 +34,4 @@ class CategoriesListBloc extends Cubit<CategoriesListState> {
       await _categoriesListRepository.deleteCategory(categoryId);
     } catch (_) {}
   }
-
-  Future<void> categoryTap(String categoryId) async {
-    AppNavigator.openCategoryTasks(categoryId);
-  }
 }

@@ -24,7 +24,7 @@ class AllCategoryPage extends HookConsumerWidget {
         centerTitle: true,
         title: Text(t.categories.title),
       ),
-      body: const CategoryList(),
+      body: const CategoriesList(),
       floatingActionButton: const NewCategoryDialogButton(),
       resizeToAvoidBottomInset: false,
     );

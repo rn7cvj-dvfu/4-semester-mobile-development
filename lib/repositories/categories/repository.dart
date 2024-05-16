@@ -1,4 +1,3 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../data/categories/interface.dart';
@@ -6,19 +5,26 @@ import 'interface.dart';
 import 'model.dart';
 
 class CategoriesListRepositoryImpl extends CategoriesListRepository {
-  final List<CategoryModel> categories = [];
+  bool _haveBeenInitialized = false;
+  late final List<CategoryModel> categories;
   final Uuid uuid = const Uuid();
 
   final CategoriesSource _categoriesSource;
 
   CategoriesListRepositoryImpl(this._categoriesSource);
 
-  Future<void> loadCategories() async {
+  Future<void> _loadCategories() async {
     final loadedCategories = (await _categoriesSource.getCategories()).map(
       (json) => CategoryModel.fromJson(json),
     );
 
-    categories.addAll(loadedCategories);
+    categories = loadedCategories.toList();
+  }
+
+  Future<void> _saveCategories() async {
+    await _categoriesSource.saveCategories(
+      categories.map((c) => c.toJson()).toList(),
+    );
   }
 
   @override
@@ -34,6 +40,7 @@ class CategoriesListRepositoryImpl extends CategoriesListRepository {
         createDate: DateTime.now(),
       ),
     );
+    _saveCategories();
   }
 
   @override
@@ -49,10 +56,16 @@ class CategoriesListRepositoryImpl extends CategoriesListRepository {
         createDate: category.createDate,
       ),
     );
+
+    _saveCategories();
   }
 
   @override
   Future<List<CategoryModel>> getCategories() async {
+    if (!_haveBeenInitialized) {
+      await _loadCategories();
+      _haveBeenInitialized = true;
+    }
     return categories;
   }
 
@@ -63,6 +76,7 @@ class CategoriesListRepositoryImpl extends CategoriesListRepository {
   @override
   Future<void> deleteCategory(String categoryId) async {
     categories.removeWhere((c) => c.id == categoryId);
+    _saveCategories();
   }
 
   @override

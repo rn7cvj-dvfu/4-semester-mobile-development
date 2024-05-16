@@ -12,8 +12,8 @@ import '../models/category.dart';
 
 import 'delete_dialog.dart';
 
-class CategoryList extends ConsumerWidget {
-  const CategoryList({super.key});
+class CategoriesList extends ConsumerWidget {
+  const CategoriesList({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -29,7 +29,7 @@ class CategoryList extends ConsumerWidget {
               color: Theme.of(context).colorScheme.secondary,
             ),
           ),
-          loaded: (data) => CategoriesList(
+          loaded: (data) => _CategoriesList(
             categories: data.categories,
           ),
           error: (_) => Center(
@@ -44,10 +44,10 @@ class CategoryList extends ConsumerWidget {
   }
 }
 
-class CategoriesList extends ConsumerWidget {
+class _CategoriesList extends ConsumerWidget {
   final List<CategoryViewModel> categories;
 
-  const CategoriesList({super.key, required this.categories});
+  const _CategoriesList({required this.categories});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -117,7 +117,8 @@ class CategoryItem extends StatelessWidget {
         child: ListTile(
           leading: const Icon(Icons.list_alt),
           title: Text(category.name),
-          onTap: () => AppNavigator.openCategoryTasks(category.id),
+          onTap: () =>
+              AppNavigator.openCategoryTasks(category.id, category.name),
         ),
       );
 

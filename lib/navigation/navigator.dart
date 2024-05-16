@@ -10,10 +10,11 @@ final class AppNavigator {
 
   static void openCategoryTasks(
     String categoryId,
+    String categoryName,
   ) {
     Navigator.of(context).pushNamed(
       RoutesPath.tasks,
-      arguments: categoryId,
+      arguments: [categoryId, categoryName],
     );
   }
 

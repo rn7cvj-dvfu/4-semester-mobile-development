@@ -3,3 +3,5 @@ newTasks: New task
 description: Description
 title: Title
 addTask: Add task
+errorWhileLoading: Error while loading tasks
+noTasks: No tasks

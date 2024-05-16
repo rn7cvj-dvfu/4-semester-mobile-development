@@ -1,95 +1,70 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../../navigation/navigator.dart';
-import '../models/task.dart';
+import '../../../../.gen/i18n/strings.g.dart';
+import '../../../../provider/bloc.dart';
+import '../bloc/bloc.dart';
+import '../bloc/state.dart';
+import '../item/bloc.dart';
+import '../item/ui.dart';
 
-final List<TaskViewModel> mockTasks = [
-  TaskViewModel(
-    id: '1',
-    title: 'Task 1',
-    description: 'Description 1',
-    isCompleted: false,
-    isFavourite: false,
-    createdAt: DateTime.now(),
-    categoryId: '1',
-  ),
-  TaskViewModel(
-    id: '2',
-    title: 'Task 2',
-    description: 'Description 1',
-    isCompleted: false,
-    isFavourite: false,
-    createdAt: DateTime.now(),
-    categoryId: '1',
-  ),
-  TaskViewModel(
-    id: '3',
-    title: 'Task 3',
-    description: 'Description 1',
-    isCompleted: false,
-    isFavourite: false,
-    createdAt: DateTime.now(),
-    categoryId: '1',
-  ),
-];
-
-class TasksList extends HookConsumerWidget {
+class TasksList extends ConsumerWidget {
   const TasksList({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final bloc = ref.watch(ProviderBloc.tasksList);
+
     return RefreshIndicator(
       onRefresh: () async {},
-      child: ListView(
-        children: mockTasks
-            .map(
-              (task) => TaskItem(task: task),
-            )
-            .toList(),
+      child: BlocBuilder<TasksListBloc, TasksListState>(
+        bloc: bloc,
+        builder: (context, state) => state.map(
+          loading: (_) => const Center(
+            child: CircularProgressIndicator(),
+          ),
+          loaded: (data) => _TasksList(
+            tasks: data.tasks,
+          ),
+          error: (_) => Center(
+            child: Text(
+              t.tasks.errorWhileLoading,
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+          ),
+        ),
       ),
     );
   }
 }
 
-class TaskItem extends StatelessWidget {
-  final TaskViewModel task;
+class _TasksList extends StatelessWidget {
+  final List<TaskBloc> tasks;
 
-  const TaskItem({super.key, required this.task});
+  const _TasksList({required this.tasks});
 
   @override
   Widget build(BuildContext context) {
-    return Dismissible(
-      key: ValueKey(task.id),
-      dismissThresholds: const {
-        DismissDirection.startToEnd: 0.4,
-        DismissDirection.endToStart: 0.4,
-      },
-      confirmDismiss: (direction) async => false,
-      background: Container(
-        color: Theme.of(context).colorScheme.secondary,
-        alignment: Alignment.centerLeft,
-        padding: const EdgeInsets.only(left: 20.0),
-        child: Icon(
-          Icons.check,
-          color: Theme.of(context).colorScheme.onSecondary,
+    if (tasks.isEmpty) {
+      return Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              t.tasks.noTasks,
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+          ],
         ),
-      ),
-      secondaryBackground: Container(
-        color: Theme.of(context).colorScheme.primary,
-        alignment: Alignment.centerRight,
-        padding: const EdgeInsets.only(right: 20.0),
-        child: Icon(
-          Icons.star,
-          color: Theme.of(context).colorScheme.onPrimary,
-        ),
-      ),
-      child: ListTile(
-        leading: Checkbox(value: task.isCompleted, onChanged: (value) {}),
-        title: Text(task.title),
-        subtitle: Text(task.description),
-        trailing: const Icon(Icons.star_border),
-        onTap: () => AppNavigator.openTaskPage(task.id),
+      );
+    }
+
+    return ListView.builder(
+      itemCount: tasks.length,
+      itemBuilder: (context, index) => TaskItem(
+        bloc: tasks[index],
       ),
     );
   }
