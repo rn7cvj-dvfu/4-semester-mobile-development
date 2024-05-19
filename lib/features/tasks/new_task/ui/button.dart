@@ -4,7 +4,12 @@ import '../../../../.gen/i18n/strings.g.dart';
 import 'bottomsheet.dart';
 
 class NewTaskButton extends StatelessWidget {
-  const NewTaskButton({super.key});
+  final String categoryId;
+
+  const NewTaskButton({
+    super.key,
+    required this.categoryId,
+  });
 
   @override
   Widget build(BuildContext context) => FloatingActionButton.extended(
@@ -20,7 +25,7 @@ class NewTaskButton extends StatelessWidget {
       builder: (_) => Wrap(
         children: [
           NewTaskBottomSheet(
-            controller: ScrollController(),
+            categoryId: categoryId,
           ),
         ],
       ),

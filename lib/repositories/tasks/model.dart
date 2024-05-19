@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part '../../.gen/repositories/tasks/model.freezed.dart';
+part '../../.gen/repositories/tasks/model.g.dart';
 
 @freezed
 class TaskModel with _$TaskModel {

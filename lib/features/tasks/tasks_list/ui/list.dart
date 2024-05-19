@@ -10,14 +10,21 @@ import '../item/bloc.dart';
 import '../item/ui.dart';
 
 class TasksList extends ConsumerWidget {
-  const TasksList({super.key});
+  final String categoryId;
+
+  const TasksList({
+    super.key,
+    required this.categoryId,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final bloc = ref.watch(ProviderBloc.tasksList);
 
     return RefreshIndicator(
-      onRefresh: () async {},
+      onRefresh: () async {
+        await bloc.refresh(categoryId);
+      },
       child: BlocBuilder<TasksListBloc, TasksListState>(
         bloc: bloc,
         builder: (context, state) => state.map(

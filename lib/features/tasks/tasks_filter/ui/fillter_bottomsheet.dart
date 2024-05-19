@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../../.gen/i18n/strings.g.dart';
+import '../../../../provider/bloc.dart';
+import '../../../../repositories/filters/models.dart';
+import '../bloc/bloc.dart';
+import '../bloc/state.dart';
 
 class FilterBottomSheet extends StatelessWidget {
   const FilterBottomSheet({super.key});
@@ -53,11 +59,13 @@ class FilterBottomSheet extends StatelessWidget {
   }
 }
 
-class _ViewFilter extends StatelessWidget {
+class _ViewFilter extends ConsumerWidget {
   const _ViewFilter();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final bloc = ref.watch(ProviderBloc.tasksFilter);
+
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
@@ -68,29 +76,36 @@ class _ViewFilter extends StatelessWidget {
             style: Theme.of(context).textTheme.headlineSmall,
           ),
           const SizedBox(height: 16),
-          DropdownButton<int>(
-            isExpanded: true,
-            underline: const SizedBox.shrink(),
-            value: 1,
-            items: [
-              DropdownMenuItem(
-                value: 1,
-                child: Text(t.filter.all),
-              ),
-              DropdownMenuItem(
-                value: 2,
-                child: Text(t.filter.complited),
-              ),
-              DropdownMenuItem(
-                value: 3,
-                child: Text(t.filter.uncomplited),
-              ),
-              DropdownMenuItem(
-                value: 3,
-                child: Text(t.filter.favourite),
-              ),
-            ],
-            onChanged: (value) => {},
+          BlocBuilder<FilterBloc, FilterState>(
+            bloc: bloc,
+            builder: (context, state) => DropdownButton<ShowType>(
+              isExpanded: true,
+              underline: const SizedBox.shrink(),
+              value: state.showType,
+              items: [
+                DropdownMenuItem(
+                  value: ShowType.all,
+                  child: Text(t.filter.all),
+                ),
+                DropdownMenuItem(
+                  value: ShowType.completed,
+                  child: Text(t.filter.complited),
+                ),
+                DropdownMenuItem(
+                  value: ShowType.uncompleted,
+                  child: Text(t.filter.uncomplited),
+                ),
+                DropdownMenuItem(
+                  value: ShowType.favorite,
+                  child: Text(t.filter.favourite),
+                ),
+              ],
+              onChanged: (value) {
+                if (value != null) {
+                  bloc.updateShowType(value);
+                }
+              },
+            ),
           ),
         ],
       ),
@@ -98,11 +113,13 @@ class _ViewFilter extends StatelessWidget {
   }
 }
 
-class _OrderFilter extends StatelessWidget {
+class _OrderFilter extends ConsumerWidget {
   const _OrderFilter();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final bloc = ref.watch(ProviderBloc.tasksFilter);
+
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
@@ -113,25 +130,32 @@ class _OrderFilter extends StatelessWidget {
             style: Theme.of(context).textTheme.headlineSmall,
           ),
           const SizedBox(height: 16),
-          DropdownButton<int>(
-            isExpanded: true,
-            underline: const SizedBox.shrink(),
-            value: 1,
-            items: [
-              DropdownMenuItem(
-                value: 1,
-                child: Text(t.filter.orderByCreateDate),
-              ),
-              DropdownMenuItem(
-                value: 2,
-                child: Text(t.filter.orderByName),
-              ),
-              DropdownMenuItem(
-                value: 3,
-                child: Text(t.filter.orderByPriority),
-              ),
-            ],
-            onChanged: (value) => {},
+          BlocBuilder<FilterBloc, FilterState>(
+            bloc: bloc,
+            builder: (context, state) => DropdownButton<SortType>(
+              isExpanded: true,
+              underline: const SizedBox.shrink(),
+              value: state.sortType,
+              items: [
+                DropdownMenuItem(
+                  value: SortType.created,
+                  child: Text(t.filter.orderByCreateDate),
+                ),
+                DropdownMenuItem(
+                  value: SortType.title,
+                  child: Text(t.filter.orderByName),
+                ),
+                DropdownMenuItem(
+                  value: SortType.favorite,
+                  child: Text(t.filter.orderByPriority),
+                ),
+              ],
+              onChanged: (value) {
+                if (value != null) {
+                  bloc.updateSortType(value);
+                }
+              },
+            ),
           ),
         ],
       ),

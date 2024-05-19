@@ -44,7 +44,10 @@ class CategoriesListRepositoryImpl extends CategoriesListRepository {
   }
 
   @override
-  Future<void> editCategory(String categoryId, String newCategoryName) async {
+  Future<void> editCategory(
+    String categoryId,
+    String newCategoryName,
+  ) async {
     final category = categories.firstWhere((c) => c.id == categoryId);
 
     await deleteCategory(categoryId);

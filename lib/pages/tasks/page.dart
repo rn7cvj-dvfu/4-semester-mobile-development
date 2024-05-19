@@ -22,7 +22,7 @@ class TasksPage extends HookConsumerWidget {
     final bloc = ref.watch(ProviderBloc.tasksList);
 
     useEffect(() {
-      bloc.refresh();
+      bloc.refresh(categoryId);
       return null;
     });
 
@@ -34,8 +34,12 @@ class TasksPage extends HookConsumerWidget {
           FilterButton(),
         ],
       ),
-      body: const TasksList(),
-      floatingActionButton: const NewTaskButton(),
+      body: TasksList(
+        categoryId: categoryId,
+      ),
+      floatingActionButton: NewTaskButton(
+        categoryId: categoryId,
+      ),
       resizeToAvoidBottomInset: false,
     );
   }

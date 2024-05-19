@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../navigation/navigator.dart';
 import '../../../../repositories/categories/interface.dart';
 import '../models/category.dart';
 import 'state.dart';

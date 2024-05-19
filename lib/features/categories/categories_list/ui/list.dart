@@ -6,6 +6,7 @@ import '../../../../.gen/i18n/strings.g.dart';
 import '../../../../navigation/navigator.dart';
 import '../../../../provider/bloc.dart';
 import '../../edit_category/ui/dialog.dart';
+import '../../new_category/ui/dialog.dart';
 import '../bloc/bloc.dart';
 import '../bloc/state.dart';
 import '../models/category.dart';
@@ -64,9 +65,12 @@ class _CategoriesList extends ConsumerWidget {
               style: Theme.of(context).textTheme.titleLarge,
             ),
             TextButton(
-              onPressed: bloc.refresh,
-              child: Text(t.common.refresh),
-            )
+              onPressed: () => showDialog(
+                context: context,
+                builder: (_) => NewCategoryDialog(),
+              ),
+              child: Text(t.categories.newCategory),
+            ),
           ],
         ),
       );

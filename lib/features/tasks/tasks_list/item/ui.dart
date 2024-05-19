@@ -20,7 +20,15 @@ class TaskItem extends StatelessWidget {
           DismissDirection.startToEnd: 0.4,
           DismissDirection.endToStart: 0.4,
         },
-        confirmDismiss: (direction) async => false,
+        confirmDismiss: (direction) async {
+          if (direction == DismissDirection.startToEnd) {
+            bloc.toggleComplete();
+          } else {
+            bloc.toggleFavorite();
+          }
+
+          return false;
+        },
         background: Container(
           color: Theme.of(context).colorScheme.secondary,
           alignment: Alignment.centerLeft,
@@ -42,8 +50,10 @@ class TaskItem extends StatelessWidget {
         child: ListTile(
           leading: Checkbox(value: state.isCompleted, onChanged: (value) {}),
           title: Text(state.title),
-          subtitle: Text(state.description),
-          trailing: const Icon(Icons.star_border),
+          subtitle: state.description.isEmpty ? null : Text(state.description),
+          trailing: Icon(
+            state.isFavourite ? Icons.star : Icons.star_border,
+          ),
           onTap: () => AppNavigator.openTaskPage(state.id),
         ),
       ),
