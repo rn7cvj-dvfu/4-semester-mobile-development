@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 66 (33 per locale)
+/// Strings: 74 (37 per locale)
 ///
-/// Built on 2024-05-16 at 07:40 UTC
+/// Built on 2024-05-19 at 12:17 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -152,6 +152,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final _StringsCommonEn common = _StringsCommonEn._(_root);
 	late final _StringsCategoriesEn categories = _StringsCategoriesEn._(_root);
 	late final _StringsTasksEn tasks = _StringsTasksEn._(_root);
+	late final _StringsChipsEn chips = _StringsChipsEn._(_root);
 }
 
 // Path: filter
@@ -223,6 +224,19 @@ class _StringsTasksEn {
 	String get noTasks => 'No tasks';
 }
 
+// Path: chips
+class _StringsChipsEn {
+	_StringsChipsEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get favorite => 'Favorite';
+	String get completed => 'Completed';
+	String get uncompleted => 'Uncompleted';
+	String get created => 'Created';
+}
+
 // Path: <root>
 class _StringsRu implements Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
@@ -250,6 +264,7 @@ class _StringsRu implements Translations {
 	@override late final _StringsFilterRu filter = _StringsFilterRu._(_root);
 	@override late final _StringsTasksRu tasks = _StringsTasksRu._(_root);
 	@override late final _StringsCategoriesRu categories = _StringsCategoriesRu._(_root);
+	@override late final _StringsChipsRu chips = _StringsChipsRu._(_root);
 	@override late final _StringsCommonRu common = _StringsCommonRu._(_root);
 }
 
@@ -304,6 +319,19 @@ class _StringsCategoriesRu implements _StringsCategoriesEn {
 	@override String get deleteCategory => 'Удалить категорию';
 	@override String get configDeleteCategory => 'Удалить категорию и все ее содержимое';
 	@override String get erorrWhileLoading => 'Ошибка во время загрузки категорий';
+}
+
+// Path: chips
+class _StringsChipsRu implements _StringsChipsEn {
+	_StringsChipsRu._(this._root);
+
+	@override final _StringsRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get favorite => 'Избранное';
+	@override String get completed => 'Завершеная';
+	@override String get uncompleted => 'Незавершенная';
+	@override String get created => 'Созданна';
 }
 
 // Path: common
@@ -361,6 +389,10 @@ extension on Translations {
 			case 'tasks.addTask': return 'Add task';
 			case 'tasks.errorWhileLoading': return 'Error while loading tasks';
 			case 'tasks.noTasks': return 'No tasks';
+			case 'chips.favorite': return 'Favorite';
+			case 'chips.completed': return 'Completed';
+			case 'chips.uncompleted': return 'Uncompleted';
+			case 'chips.created': return 'Created';
 			default: return null;
 		}
 	}
@@ -395,6 +427,10 @@ extension on _StringsRu {
 			case 'categories.deleteCategory': return 'Удалить категорию';
 			case 'categories.configDeleteCategory': return 'Удалить категорию и все ее содержимое';
 			case 'categories.erorrWhileLoading': return 'Ошибка во время загрузки категорий';
+			case 'chips.favorite': return 'Избранное';
+			case 'chips.completed': return 'Завершеная';
+			case 'chips.uncompleted': return 'Незавершенная';
+			case 'chips.created': return 'Созданна';
 			case 'common.delete': return 'Удалить';
 			case 'common.cancel': return 'Отмена';
 			case 'common.add': return 'Добавить';

@@ -54,7 +54,10 @@ class TaskItem extends StatelessWidget {
           trailing: Icon(
             state.isFavourite ? Icons.star : Icons.star_border,
           ),
-          onTap: () => AppNavigator.openTaskPage(state.id),
+          onTap: () => AppNavigator.openTaskPage(
+            state.id,
+            state.title,
+          ),
         ),
       ),
     );

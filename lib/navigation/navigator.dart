@@ -20,10 +20,11 @@ final class AppNavigator {
 
   static void openTaskPage(
     String taskId,
+    String taskName,
   ) {
     Navigator.of(context).pushNamed(
       RoutesPath.task,
-      arguments: taskId,
+      arguments: [taskId, taskName],
     );
   }
 }

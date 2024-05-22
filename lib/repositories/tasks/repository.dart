@@ -44,6 +44,16 @@ class TasksListRepositoryImpl extends TasksListRepository {
   }
 
   @override
+  Future<TaskModel> getTask(String taskId) async {
+    if (!_haveBeenInitialized) {
+      await _loadTasks();
+      _haveBeenInitialized = true;
+    }
+
+    return tasks.firstWhere((task) => task.id == taskId);
+  }
+
+  @override
   Future<void> addTask(
     String categoryId,
     String taskName,

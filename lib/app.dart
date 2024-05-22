@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'features/task/task_page/ui/page.dart';
 import 'navigation/router.dart';
 import 'navigation/routes.dart';
 import 'pages/all_categories/page.dart';
+import 'pages/task/page.dart';
 import 'pages/tasks/page.dart';
 
 class App extends StatelessWidget {
@@ -42,7 +42,8 @@ class _Navigator extends StatelessWidget {
           ),
         RoutesPath.task => MaterialPageRoute(
             builder: (_) => TaskPage(
-              taskId: settings.arguments as String,
+              taskId: (settings.arguments as List<String>).first,
+              taskName: (settings.arguments as List<String>).last,
             ),
           ),
         _ => throw Exception("Route not found: ${settings.name}"),
