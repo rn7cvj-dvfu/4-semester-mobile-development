@@ -45,15 +45,13 @@ class CategoriesList extends ConsumerWidget {
   }
 }
 
-class _CategoriesList extends ConsumerWidget {
+class _CategoriesList extends StatelessWidget {
   final List<CategoryViewModel> categories;
 
   const _CategoriesList({required this.categories});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final bloc = ref.watch(ProviderBloc.categoriesList);
-
+  Widget build(BuildContext context) {
     if (categories.isEmpty) {
       return Center(
         child: Column(

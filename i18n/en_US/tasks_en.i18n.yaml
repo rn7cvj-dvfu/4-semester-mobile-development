@@ -1,7 +1,9 @@
 fallbackTitle: Tasks
 newTasks: New task
+editTask: Edit task
 description: Description
 title: Title
 addTask: Add task
+changeTask: Change task
 errorWhileLoading: Error while loading tasks
 noTasks: No tasks

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../../.gen/i18n/strings.g.dart';
+import '../../features/task/edit_task/ui/button.dart';
 import '../../features/task/task_chip/ui/chips.dart';
 import '../../features/task/task_discription/ui/discription.dart';
 import '../../provider/bloc.dart';
@@ -22,9 +22,11 @@ class TaskPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final chipsBloc = ref.watch(ProviderBloc.taskChips);
+    final discriptionBloc = ref.watch(ProviderBloc.taskDiscription);
 
     useEffect(() {
       chipsBloc.loadTaskChips(taskId);
+      discriptionBloc.loadDiscription(taskId);
       return null;
     });
 
@@ -60,10 +62,8 @@ class TaskPage extends HookConsumerWidget {
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {},
-        label: Text(t.common.edit),
-        icon: const Icon(Icons.edit),
+      floatingActionButton: EditTaskButton(
+        taskId: taskId,
       ),
     );
   }

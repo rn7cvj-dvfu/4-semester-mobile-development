@@ -1,7 +1,9 @@
 fallbackTitle: Задачи
 newTasks: Новая задача
+editTask: Редактировать задачу
 description: Описание
 title: Название
 addTask: Добавить задачу
+changeTask: Изменить задачу
 errorWhileLoading: Ошибка при загрузке задач
 noTasks: Нет задач

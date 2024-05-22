@@ -31,10 +31,15 @@ class TaskDiscription extends ConsumerWidget {
                 ),
               ),
               const SizedBox(height: 16),
-              Text(
-                'Description for task ID: $taskId',
-                style: const TextStyle(
-                  fontSize: 16,
+              state.map(
+                loading: (_) => const Center(
+                  child: CircularProgressIndicator(),
+                ),
+                loaded: (data) => Text(
+                  data.description,
+                  style: const TextStyle(
+                    fontSize: 16,
+                  ),
                 ),
               ),
             ],
