@@ -44,3 +44,5 @@ app.*.map.json
 .vscode/settings.json
 
 .fvmrc
+
+/lib/.gen/

@@ -6,22 +6,25 @@ import 'routes.dart';
 final class AppNavigator {
   static BuildContext get context => rootNavigatorKey.currentContext!;
 
+  AppNavigator._();
+
   static void openCategoryTasks(
-    String categoryName,
     String categoryId,
+    String categoryName,
   ) {
     Navigator.of(context).pushNamed(
       RoutesPath.tasks,
-      arguments: categoryName,
+      arguments: [categoryId, categoryName],
     );
   }
 
   static void openTaskPage(
     String taskId,
+    String taskName,
   ) {
     Navigator.of(context).pushNamed(
       RoutesPath.task,
-      arguments: taskId,
+      arguments: [taskId, taskName],
     );
   }
 }
