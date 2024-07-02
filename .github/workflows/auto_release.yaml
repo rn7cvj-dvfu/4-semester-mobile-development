@@ -26,8 +26,8 @@ jobs:
 
           cache: true
       - run: flutter pub get
-      - run: flutter run build_runner build -d
-      - run: flutter run slang
+      - run: dart run build_runner build -d
+      - run: dart run slang
       - run: flutter build apk --split-per-abi 
       - run: mv build/app/outputs/flutter-apk/app-arm64-v8a-release.apk build/app/outputs/flutter-apk/fefufit_admin.apk
 
