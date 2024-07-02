@@ -30,7 +30,7 @@ class EditTaskBottomSheet extends ConsumerWidget {
       child: BlocBuilder<EditTaskBloc, EditTaskState>(
         bloc: bloc,
         builder: (context, state) => state.map(
-          lodaing: (_) => const SizedBox(
+          loading: (_) => const SizedBox(
             height: 200,
             width: double.infinity,
             child: Center(
